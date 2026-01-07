@@ -15,5 +15,5 @@ A simple end-to-end ELT pipeline built on **Google Cloud Platform**. Takes fake 
 
 ## How to Run
 1.  **Deploy Infra:** `terraform apply`
-2.  **Start Stream:** `python ingest.py`
+2.  **Start Stream:** `python ingest.py` (Creates 5 fake record at a time. Let it run for a while or just in background)
 3.  **Transform:** `cd clickstream && dbt run`
