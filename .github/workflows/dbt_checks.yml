@@ -1,0 +1,44 @@
+name: dbt Quality Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DBT_PROFILES_DIR: ./
+
+jobs:
+  test_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Install Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    # Install dbt
+    - name: Install dependencies
+      run: |
+        pip install dbt-bigquery
+
+    # Create Credential File from Github Secret Key thing
+    - name: Authenticate to Google Cloud
+      env:
+        GCP_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+      run: |
+        echo "$GCP_KEY" > ./keyfile.json
+
+    # Run dbt Tests
+    - name: Run dbt Tests
+      run: |
+        cd clickstream
+        dbt deps
+        dbt test --profiles-dir ..

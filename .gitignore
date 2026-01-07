@@ -27,3 +27,4 @@ logs/
 .vscode/
 
 credentials.json
+keyfile.json

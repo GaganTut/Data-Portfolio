@@ -1,0 +1,11 @@
+clickstream:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: gagan-data-portfolio
+      dataset: clickstream_staging
+      threads: 1
+      keyfile: ./keyfile.json
+      location: US
