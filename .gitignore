@@ -1,0 +1,29 @@
+# --- Terraform ---
+# The .terraform directory contains the heavy binaries/plugins
+.terraform/
+# State files - NEVER COMMIT THESE
+*.tfstate
+*.tfstate.*
+# Crash logs
+crash.log
+*.tfvars
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+
+# Your virtual environment
+venv/
+.env
+
+# --- dbt ---
+# Build artifacts (compiled SQL, manifests)
+target/
+dbt_packages/
+logs/
+
+# --- OS / Editor ---
+.DS_Store
+.vscode/
+
+credentials.json

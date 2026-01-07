@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: clickstream_raw
+    database: gagan-data-portfolio
+    schema: clickstream_raw
+    tables:
+      - name: events
